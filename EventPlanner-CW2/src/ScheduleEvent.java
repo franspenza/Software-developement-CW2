@@ -25,13 +25,15 @@ public class ScheduleEvent extends JFrame{
     //declaration of comboboxes making use of JComboBox
     private JComboBox cmbInterval, cmbReminderHour, cmbReminderOnScreen;
     //declaration of JLabels
-    private JLabel lblTitle, lblStartDate, lblStartTime, lblEndDate, lblDuration, lblHour, lblMinute, lblRecurring, lblInterval, lblLocation, lblReminder, lblDetails;
+    private JLabel lblTitle, lblStartDate, lblStartTime, lblEndDate, lblDuration, lblHour, lblMinute, lblRecurring, lblInterval, lblLocation, lblDetails;
     //declaration of JButtons
-    private JButton btnSave, btnEdit, btnClear, btnClose;   
+    private JButton btnSave, btnEdit, btnClear, btnClose, btnGPS;   
     //declaration of JCheckBoxes
-    private JCheckBox chbRecurring;
-    //declaration of interval combobox
+    private JCheckBox chbRecurring, chbRemind;
+    //declaration of comboboxes
     private final String[] intervalList = {"Daily","Weekly","Monthly", "Yearly"};
+    private final String[] minutesList = {"5", "10", "15", "20", "30"};
+    private final String[] reminderType = {"On screen", "Pop-up", "Notification", "Email"};
     //declaration of JButtons
     private JRadioButton rbtMonday, rbtTuesday, rbtWednesday, rbtThursday, rbtFriday, rbtSaturday, rbtSunday;
     
@@ -43,19 +45,15 @@ public class ScheduleEvent extends JFrame{
     
     public void buildScheduleEventGUI(){
     	setTitle("Schedule Event"); //set title of form
-        setSize(400, 500); //set the size of the form
+        setSize(400, 600); //set the size of the form
         setLocationRelativeTo(null); //the form schedule event would be loaded exactly where I am working
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); //this property disposes any form details from memory, when the form is 
         
         //Create new grid layout having 10 rows and 2 columns
-        JPanel scheduleEvent = new JPanel(new GridLayout(11,2));
+        JPanel scheduleEvent = new JPanel(new GridLayout(15,2));
         //creating new instances of the private attributes in the grid layout
         scheduleEvent.add(new JLabel("Schedule Events"));
         scheduleEvent.add(new JLabel(" "));
-        scheduleEvent.add(new JLabel(" "));
-        
-        scheduleEvent.add(lblTitle = new JLabel("Title: "));
-        scheduleEvent.add(txtTitle = new JTextField(5));
         scheduleEvent.add(new JLabel(" "));
         
         scheduleEvent.add(lblTitle = new JLabel("Title: "));
@@ -74,15 +72,11 @@ public class ScheduleEvent extends JFrame{
         scheduleEvent.add(txtStartTime = new JFormattedTextField(startTimeFormatter));
         scheduleEvent.add(new JLabel(" "));
 
-        scheduleEvent.add(lblEndDate = new JLabel("End Time: "));
-        DateFormat endFormatTime = new SimpleDateFormat("hh:mm"); //creating the mask format for time
+        scheduleEvent.add(lblEndDate = new JLabel("End Date: "));
+        DateFormat endFormatTime = new SimpleDateFormat("dd/MM/yyyy"); //creating the mask format for date
         DateFormatter endTimeFormatter = new DateFormatter(endFormatTime);
         scheduleEvent.add(txtEndDate = new JFormattedTextField(endTimeFormatter));
         scheduleEvent.add(new JLabel(" "));
-
-        scheduleEvent.add(lblDetails = new JLabel("Details: "));        
-        scheduleEvent.add(txtDetails = new JTextField(20));
-        scheduleEvent.add(new JLabel(" "));      
         
         scheduleEvent.add(chbRecurring = new JCheckBox("Recurring?"));
         chbRecurring.setMnemonic(KeyEvent.VK_C);
@@ -96,8 +90,29 @@ public class ScheduleEvent extends JFrame{
         scheduleEvent.add(rbtThursday = new JRadioButton("Thursday"));
         scheduleEvent.add(rbtFriday = new JRadioButton("Friday"));
         scheduleEvent.add(rbtSaturday = new JRadioButton("Saturday"));
-        scheduleEvent.add(rbtSunday = new JRadioButton("Sunday"));        
-
+        scheduleEvent.add(rbtSunday = new JRadioButton("Sunday"));   
+        scheduleEvent.add(new JLabel(" "));  
+        scheduleEvent.add(new JLabel(" "));
+        
+        scheduleEvent.add(lblLocation = new JLabel("Location: "));
+        scheduleEvent.add(txtLocation = new JTextField(10));
+        scheduleEvent.add(btnGPS = new JButton ("GPS"));
+        scheduleEvent.add(new JLabel(" ")); 
+        scheduleEvent.add(new JLabel(" "));  
+        scheduleEvent.add(new JLabel(" "));  
+                
+        scheduleEvent.add(chbRemind = new JCheckBox("Remind?"));
+        chbRecurring.setMnemonic(KeyEvent.VK_C);
+        chbRecurring.setSelected(true);
+        scheduleEvent.add(cmbReminderHour = new JComboBox(minutesList));
+        scheduleEvent.add(cmbReminderOnScreen = new JComboBox(reminderType));
+        scheduleEvent.add(new JLabel(" "));
+        scheduleEvent.add(new JLabel(" "));
+        scheduleEvent.add(new JLabel(" "));
+        
+        scheduleEvent.add(lblDetails = new JLabel("Details: "));        
+        scheduleEvent.add(txtDetails = new JTextField(20));
+        scheduleEvent.add(new JLabel(" "));
                 
       //declaration of another panel for the event buttons
         JPanel scheduleEventControlPanel = new JPanel(new FlowLayout());
