@@ -25,9 +25,11 @@ public class ScheduleEvent extends JFrame{
     //declaration of comboboxes making use of JComboBox
     private JComboBox cmbInterval, cmbReminderHour, cmbReminderOnScreen;
     //declaration of JLabels
-    private JLabel lblTitle, lblStartDate, lblStartTime, lblEndDate, lblDuration, lblHour, lblMinute, lblRecurring, lblInterval, lblSunday, lblMonday, lblTuesday, lblWednesday, lblThursday, lblFriday, lblSaturday, lblLocation, lblReminder, lblDetails;
+    private JLabel lblTitle, lblStartDate, lblStartTime, lblEndDate, lblDuration, lblHour, lblMinute, lblRecurring, lblInterval, lblLocation, lblReminder, lblDetails;
     //declaration of JButtons
     private JButton btnSave, btnEdit, btnClear, btnClose;   
+    //declaration of JCheckBoxes
+    private JCheckBox chbRecurring;
     
     //default constructor
     public ScheduleEvent(){   
@@ -76,7 +78,11 @@ public class ScheduleEvent extends JFrame{
 
         scheduleEvent.add(lblDetails = new JLabel("Details: "));        
         scheduleEvent.add(txtDetails = new JTextField(20));
-        scheduleEvent.add(new JLabel(" "));       
+        scheduleEvent.add(new JLabel(" "));      
+        
+        scheduleEvent.add(chbRecurring = new JCheckBox("Recurring?"));
+        chbRecurring.setMnemonic(KeyEvent.VK_C);
+        chbRecurring.setSelected(true);       
 
                 
       //declaration of another panel for the event buttons
@@ -91,5 +97,17 @@ public class ScheduleEvent extends JFrame{
         panel.add(scheduleEvent, BorderLayout.CENTER);
         panel.add(scheduleEventControlPanel, BorderLayout.SOUTH);
         add(panel, BorderLayout.CENTER);
+    }
+    
+    //method to change radio button state
+    public void itemStateChanged(ItemEvent e) {
+    	Object source = e.getItemSelectable();
+    	if (source == chbRecurring) {
+    		//...make a note of it			
+		}
+    	
+    	if(e.getStateChange() == ItemEvent.DESELECTED) {
+    		//...make a note if it
+    	}
     }
 }
