@@ -36,57 +36,59 @@ public class ScheduleEvent extends JFrame{
     }
     
     public void buildScheduleEventGUI(){
-        setTitle("Schedule Event"); //set title of form
+    	setTitle("Schedule Event"); //set title of form
         setSize(400, 500); //set the size of the form
-        setLocationRelativeTo(null); //the form patient would be loaded exactly where I am working
+        setLocationRelativeTo(null); //the form schedule event would be loaded exactly where I am working
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); //this property disposes any form details from memory, when the form is 
         
         //Create new grid layout having 10 rows and 2 columns
-        JPanel scheduleDetailPanel = new JPanel(new GridLayout(10,2));
+        JPanel scheduleEvent = new JPanel(new GridLayout(10,2));
         //creating new instances of the private attributes in the grid layout
-        scheduleDetailPanel.add(new JLabel("Schedule Event"));
-        scheduleDetailPanel.add(new JLabel(" "));
-        scheduleDetailPanel.add(new JLabel(" "));
+        scheduleEvent.add(new JLabel("Schedule Events"));
+        scheduleEvent.add(new JLabel(" "));
+        scheduleEvent.add(new JLabel(" "));
         
-        scheduleDetailPanel.add(lblTitle = new JLabel("Title: "));
-        scheduleDetailPanel.add(txtTitle = new JTextField(5));
-        scheduleDetailPanel.add(new JLabel(" "));
+        scheduleEvent.add(lblTitle = new JLabel("Title: "));
+        scheduleEvent.add(txtTitle = new JTextField(5));
+        scheduleEvent.add(new JLabel(" "));
         
-        scheduleDetailPanel.add(lblStartDate = new JLabel("Start Date: "));
+        scheduleEvent.add(lblTitle = new JLabel("Title: "));
+        scheduleEvent.add(txtTitle = new JTextField(5));
+        scheduleEvent.add(new JLabel(" "));
+
+        scheduleEvent.add(lblStartDate = new JLabel("Start Date: "));
         DateFormat startFormatDate = new SimpleDateFormat("dd/MM/yyyy"); //creating the mask format for date
         DateFormatter startDateFormatter = new DateFormatter(startFormatDate);
-        scheduleDetailPanel.add(txtStartDate = new JFormattedTextField(startDateFormatter));
-        scheduleDetailPanel.add(new JLabel(" "));
-        
-        scheduleDetailPanel.add(lblStartTime = new JLabel("Start Time: "));
+        scheduleEvent.add(txtStartDate = new JFormattedTextField(startDateFormatter));
+        scheduleEvent.add(new JLabel(" "));
+
+        scheduleEvent.add(lblStartTime = new JLabel("Start Time: "));
         DateFormat startFormatTime = new SimpleDateFormat("hh:mm"); //creating the mask format for time
         DateFormatter startTimeFormatter = new DateFormatter(startFormatTime);
-        scheduleDetailPanel.add(txtStartTime = new JFormattedTextField(startTimeFormatter));
-        scheduleDetailPanel.add(new JLabel(" "));
-        
-        scheduleDetailPanel.add(lblEndDate = new JLabel("End Time: "));
+        scheduleEvent.add(txtStartTime = new JFormattedTextField(startTimeFormatter));
+        scheduleEvent.add(new JLabel(" "));
+
+        scheduleEvent.add(lblEndDate = new JLabel("End Time: "));
         DateFormat endFormatTime = new SimpleDateFormat("hh:mm"); //creating the mask format for time
         DateFormatter endTimeFormatter = new DateFormatter(endFormatTime);
-        scheduleDetailPanel.add(txtEndDate = new JFormattedTextField(endTimeFormatter));
-        scheduleDetailPanel.add(new JLabel(" "));
-        
-        scheduleDetailPanel.add(lblDetails = new JLabel("Details"));
-        scheduleDetailPanel.add(new JLabel(" "));
-        
-        scheduleDetailPanel.add(txtDetails = new JTextField(25));
-        scheduleDetailPanel.add(new JLabel(" "));       
-        
+        scheduleEvent.add(txtEndDate = new JFormattedTextField(endTimeFormatter));
+        scheduleEvent.add(new JLabel(" "));
+
+        scheduleEvent.add(lblDetails = new JLabel("Details: "));        
+        scheduleEvent.add(txtDetails = new JTextField(20));
+        scheduleEvent.add(new JLabel(" "));       
+
                 
-     //declaration of another panel for the event buttons
+      //declaration of another panel for the event buttons
         JPanel scheduleEventControlPanel = new JPanel(new FlowLayout());
         scheduleEventControlPanel.add(btnSave = new JButton("Save"));
         scheduleEventControlPanel.add(btnEdit = new JButton("Edit"));
         scheduleEventControlPanel.add(btnClear = new JButton("Clear"));   
         scheduleEventControlPanel.add(btnClose = new JButton("Close"));
-        
+
         //declaring a new grid layout to insert the other panels inside it
         JPanel panel = new JPanel(new GridLayout(2,1));
-        panel.add(scheduleDetailPanel, BorderLayout.CENTER);
+        panel.add(scheduleEvent, BorderLayout.CENTER);
         panel.add(scheduleEventControlPanel, BorderLayout.SOUTH);
         add(panel, BorderLayout.CENTER);
     }
