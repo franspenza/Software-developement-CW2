@@ -30,6 +30,10 @@ public class ScheduleEvent extends JFrame{
     private JButton btnSave, btnEdit, btnClear, btnClose;   
     //declaration of JCheckBoxes
     private JCheckBox chbRecurring;
+    //declaration of interval combobox
+    private final String[] intervalList = {"Daily","Weekly","Monthly", "Yearly"};
+    //declaration of JButtons
+    private JRadioButton rbtMonday, rbtTuesday, rbtWednesday, rbtThursday, rbtFriday, rbtSaturday, rbtSunday;
     
     //default constructor
     public ScheduleEvent(){   
@@ -44,7 +48,7 @@ public class ScheduleEvent extends JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); //this property disposes any form details from memory, when the form is 
         
         //Create new grid layout having 10 rows and 2 columns
-        JPanel scheduleEvent = new JPanel(new GridLayout(10,2));
+        JPanel scheduleEvent = new JPanel(new GridLayout(11,2));
         //creating new instances of the private attributes in the grid layout
         scheduleEvent.add(new JLabel("Schedule Events"));
         scheduleEvent.add(new JLabel(" "));
@@ -83,6 +87,16 @@ public class ScheduleEvent extends JFrame{
         scheduleEvent.add(chbRecurring = new JCheckBox("Recurring?"));
         chbRecurring.setMnemonic(KeyEvent.VK_C);
         chbRecurring.setSelected(true);       
+        
+        scheduleEvent.add(lblInterval = new JLabel("Interval: "));
+        scheduleEvent.add(cmbInterval = new JComboBox(intervalList));
+        scheduleEvent.add(rbtMonday = new JRadioButton("Monday"));
+        scheduleEvent.add(rbtTuesday = new JRadioButton("Tuesday"));
+        scheduleEvent.add(rbtWednesday = new JRadioButton("Wednesday"));
+        scheduleEvent.add(rbtThursday = new JRadioButton("Thursday"));
+        scheduleEvent.add(rbtFriday = new JRadioButton("Friday"));
+        scheduleEvent.add(rbtSaturday = new JRadioButton("Saturday"));
+        scheduleEvent.add(rbtSunday = new JRadioButton("Sunday"));        
 
                 
       //declaration of another panel for the event buttons
@@ -94,7 +108,7 @@ public class ScheduleEvent extends JFrame{
 
         //declaring a new grid layout to insert the other panels inside it
         JPanel panel = new JPanel(new GridLayout(2,1));
-        panel.add(scheduleEvent, BorderLayout.CENTER);
+        panel.add(scheduleEvent, BorderLayout.CENTER);              		
         panel.add(scheduleEventControlPanel, BorderLayout.SOUTH);
         add(panel, BorderLayout.CENTER);
     }
