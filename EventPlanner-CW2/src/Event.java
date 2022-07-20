@@ -3,7 +3,7 @@ import java.time.LocalTime;
 
 public class Event {
 
-	private int id;
+	private String id;
 	private String title;
 	private String description;
 	private String type;
@@ -15,7 +15,7 @@ public class Event {
 		
 	}
 	
-	public Event(int eventId, String eventTitle, String eventDescription, String eventType, Date eventDate, LocalTime eventTime, String eventLocation) {
+	public Event(String eventId, String eventTitle, String eventDescription, String eventType, Date eventDate, LocalTime eventTime, String eventLocation) {
 		id = eventId;
 		title = eventTitle;
 		description = eventDescription;
@@ -28,11 +28,11 @@ public class Event {
 	// ==== Getters & Setters ====
 	
 	// ID
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int eventId) {
+	public void setId(String eventId) {
 		this.id = eventId;
 	}
 	

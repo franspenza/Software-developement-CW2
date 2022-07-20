@@ -3,10 +3,11 @@ import java.util.Date;
 
 public class Person {
 
-	private int id;
+	private String id;
 	private String title;
 	private String name;
 	private String surname;
+	private String gender;
 	private Date dateOfBirth;
 	private int age;
 	private String email;
@@ -16,11 +17,12 @@ public class Person {
 		
 	}
 	
-	public Person(int personId, String personTitle, String personName, String personSurname, Date personDateOfBirth, int personAge, String personEmail, String personPassword) {
+	public Person(String personId, String personTitle, String personName, String personSurname, String personGender, Date personDateOfBirth, int personAge, String personEmail, String personPassword) {
 		id = personId;
 		title = personTitle;
 		name = personName;
 		surname = personSurname;
+		gender = personGender;
 		dateOfBirth = personDateOfBirth;
 		age = personAge;
 		email = personEmail;
@@ -30,11 +32,11 @@ public class Person {
 	// ==== Getters & Setters ====
 	
 	// ID
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int personId) {
+	public void setId(String personId) {
 		this.id = personId;
 	}
 	
@@ -63,6 +65,15 @@ public class Person {
 
 	public void setSurname(String personSurname) {
 		this.surname = personSurname;
+	}
+	
+	// Gender
+	public String Gender() {
+		return gender;
+	}
+
+	public void setGender(String personGender) {
+		this.gender = personGender;
 	}
 	
 	// DoB
