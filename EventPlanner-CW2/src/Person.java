@@ -16,7 +16,6 @@ public class Person {
 		
 	}
 	
-	//test
 	public Person(int personId, String personTitle, String personName, String personSurname, Date personDateOfBirth, int personAge, String personEmail, String personPassword) {
 		id = personId;
 		title = personTitle;
@@ -36,7 +35,7 @@ public class Person {
 	}
 
 	public void setId(int personId) {
-		this.age = personId;
+		this.id = personId;
 	}
 	
 	// Title
