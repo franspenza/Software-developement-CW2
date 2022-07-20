@@ -225,15 +225,49 @@ public class ApplicationLogic implements Serializable{
     }
     
     
+    /**
+     * 
+     * @param getPersonData
+     * @return
+     */
     //String is the ID of myPersonHashMap in order to get the person data
     public static Person getPersonData(String getPersonData){
         Person personData = myPersonHashMap.get(getPersonData);
         return personData;
     }
     
+    /**
+     * 
+     * @param getEventData
+     * @return
+     */
     //String is the ID of myEventHashMap in order to get the event data
     public static Event getEventData(String getEventData){
         Event eventData = myEventHashMap.get(getEventData);
         return eventData;
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public static String[] listPersonName(){
+        return myPersonHashMap.keySet().toArray(new String[0]);
+    }   
+    
+    /**
+     * 
+     * @param ID
+     * @return
+     */
+    public static String[] listEventNameByName(String ID){
+        String[] split = new String[0];
+        String e = ID;
+        
+        for(String key: myEventHashMap.keySet()){
+            e = key + "\n" + e;
+            split = e.split("\n");
+        }
+        return split;
     }
 }
