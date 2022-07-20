@@ -223,4 +223,17 @@ public class ApplicationLogic implements Serializable{
         // return salt
         return salt.toString();
     }
+    
+    
+    //String is the ID of myPersonHashMap in order to get the person data
+    public static Person getPersonData(String getPersonData){
+        Person personData = myPersonHashMap.get(getPersonData);
+        return personData;
+    }
+    
+    //String is the ID of myEventHashMap in order to get the event data
+    public static Event getEventData(String getEventData){
+        Event eventData = myEventHashMap.get(getEventData);
+        return eventData;
+    }
 }
