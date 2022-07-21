@@ -14,7 +14,8 @@ public class main {
 		
 		Login login = new Login();
 		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		login.setVisible(true);
+		login.setVisible(true);		
+		
 	}
 
 }
