@@ -49,7 +49,7 @@ public class ScheduleEvent extends JFrame{
         setLocationRelativeTo(null); //the form schedule event would be loaded exactly where I am working
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); //this property disposes any form details from memory, when the form is 
         
-        //Create new grid layout having 10 rows and 2 columns
+        //Create new grid layout having 15 rows and 2 columns
         JPanel scheduleEvent = new JPanel(new GridLayout(15,2));
         //creating new instances of the private attributes in the grid layout
         scheduleEvent.add(new JLabel("Schedule Events"));
