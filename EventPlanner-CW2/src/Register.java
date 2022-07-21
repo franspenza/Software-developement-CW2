@@ -20,12 +20,12 @@ public class Register extends JFrame {
 	
 	//declaration of textboxes making use of JTextField
     private JTextField txtUsername, txtPassword;
-  //declaration of JLabels
+    //declaration of JLabels
     private JLabel lblUsername, lblPassword;
     //declaration of JButtons
     private JButton btnSave, btnClear, btnClose;   
     
-  //default constructor
+    //default constructor
     public Register(){   
     	
     	buildRegisterGUI();
