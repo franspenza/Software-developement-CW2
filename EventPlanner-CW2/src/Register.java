@@ -62,6 +62,14 @@ public class Register extends JFrame {
 				}
             }
         });
+    	
+    	btnClose.addActionListener(new ActionListener(){
+            @Override
+                public void actionPerformed(ActionEvent e){
+            		setVisible(false);
+            		dispose(); 		
+                }
+        });
     }
     
     public void buildRegisterGUI(){

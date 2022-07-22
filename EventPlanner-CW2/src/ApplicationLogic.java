@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 
 //import java.util.Vector;
@@ -53,7 +54,7 @@ public class ApplicationLogic implements Serializable{
     	//Create the users through hard code in Constructor.
         if(loadedPersonHashMap == false){
         
-            addPersonRecord("1", "Mr", "Frans", "Penza", "Male", null, 30, "franspenza@gmail.com", "test");
+            addPersonRecord("1", "Mr", "Frans", "Penza", "Male", null, 30, "franspenza@gmail.com", "7944e79618bcf172b32dc74036f71e99");
             addPersonRecord("2", "Mr", "Christian", "Attard", "Male", null, 30, "chris.att.91@gmail.com", "test");
         }
         
@@ -175,7 +176,7 @@ public class ApplicationLogic implements Serializable{
 
         String regeneratedPassowrdToVerify = getSecurePassword(passwordToHash, salt);
 
-        System.out.println(regeneratedPassowrdToVerify);
+        //System.out.println(regeneratedPassowrdToVerify);
     	
     	return securePassword;
     }
@@ -294,4 +295,29 @@ public class ApplicationLogic implements Serializable{
             return false;
         }
     }
+    
+    
+    public static boolean loginVerification(String inputUsername, String inputPassword){
+    	
+    	int userIdCounter = ApplicationLogic.sizeOfPersonHashmap() + 1;
+    	for(int i = 1; i < userIdCounter;) {
+    		Person personData = myPersonHashMap.get(String.valueOf(i));
+    		i++;
+    		System.out.println(inputUsername);
+    		System.out.println(inputPassword);
+    		System.out.println(personData.getEmail());
+    		System.out.println(personData.getPassword());
+    		if (personData.getEmail() == inputUsername) {
+    			if (personData.getPassword() == inputPassword) {
+    				System.out.printf(personData.getPassword());
+    				System.out.printf(personData.getEmail());
+    				return true;
+    			}
+    		}
+    		
+    		}
+		return false;
+
+    	}
+    
 }

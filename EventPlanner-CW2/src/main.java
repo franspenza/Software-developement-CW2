@@ -8,13 +8,13 @@ public class main {
 //		scheduleEvent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		scheduleEvent.setVisible(true);
 		
-		Register register = new Register();
-		register.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		register.setVisible(true);
+//		Register register = new Register();
+//		register.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		register.setVisible(true);
 		
-//		Login login = new Login();
-//		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		login.setVisible(true);	
+		Login login = new Login();
+		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		login.setVisible(true);	
 		
 //		CalendarModel cal = new CalendarModel();
 //		EventDateModel events = new EventDateModel();
