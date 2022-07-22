@@ -15,7 +15,7 @@ public class Login extends JFrame{
     //declaration of JLabels
     private JLabel lblUsername, lblPassword;
     //declaration of JButtons
-    private JButton btnLogin, btnClear, btnClose;   
+    private JButton btnLogin, btnReg, btnClear, btnClose;   
     
     //default constructor
     public Login(){   
@@ -45,7 +45,8 @@ public class Login extends JFrame{
                 
       //declaration of another panel for the event buttons
         JPanel loginFormControlPanel = new JPanel(new FlowLayout());
-        loginFormControlPanel.add(btnLogin = new JButton("Login"));        
+        loginFormControlPanel.add(btnLogin = new JButton("Login"));      
+        loginFormControlPanel.add(btnReg = new JButton("Register"));
         loginFormControlPanel.add(btnClear = new JButton("Clear"));   
         loginFormControlPanel.add(btnClose = new JButton("Close"));
 

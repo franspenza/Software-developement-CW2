@@ -30,11 +30,17 @@ import java.security.NoSuchProviderException;
  */
 public class ApplicationLogic implements Serializable{
 
-    //declare and initialize the Hashmap myPersonHashMap
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	//declare and initialize the Hashmap myPersonHashMap
     private static Map<String, Person> myPersonHashMap = new HashMap<String, Person>();
     
     //declare and initialize the Hashmap myEventHashMap
     private static Map<String, Event> myEventHashMap = new HashMap<String, Event>();
+    
     
     //declare the path (location) and file name for each object 
     String personFileName = "Person.obj";    
@@ -48,9 +54,12 @@ public class ApplicationLogic implements Serializable{
         if(loadedPersonHashMap == false){
         
             addPersonRecord("1", "Mr", "Frans", "Penza", "Male", null, 30, "franspenza@gmail.com", "test");
-            addPersonRecord("1", "Mr", "Christian", "Attard", "Male", null, 30, "chris.att.91@gmail.com", "test");
+            addPersonRecord("2", "Mr", "Christian", "Attard", "Male", null, 30, "chris.att.91@gmail.com", "test");
         }
+        
+
     }
+    
     
     
     //save to disk method for object patient
@@ -213,7 +222,7 @@ public class ApplicationLogic implements Serializable{
     
     private static String getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
         // Always use a SecureRandom generator
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "MOON");
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");
 
         // Create array for salt
         byte[] salt = new byte[16];
@@ -270,5 +279,19 @@ public class ApplicationLogic implements Serializable{
             split = e.split("\n");
         }
         return split;
+    }
+    
+    // get size of hashmap
+    public static int sizeOfPersonHashmap() {
+    	int sizeOfPersonHashmap = myPersonHashMap.size();
+    	return sizeOfPersonHashmap;
+    }
+    
+    public static boolean getPersonId(String personId){
+        if(myPersonHashMap.containsKey(personId)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

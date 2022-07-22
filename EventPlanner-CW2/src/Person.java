@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Date;
 // import java.time.LocalTime;
 
-public class Person {
+public class Person implements Serializable {
 
 	private String id;
 	private String title;
