@@ -3,20 +3,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.*;
 
+//class to add, view and check events
 public class EventDate {
+	//declaring local variables
 	LocalDate date;
+	//declaring an ArrayList <EventSchedule>
 	ArrayList<EventSchedule> events;
 	
+	//constructor
 	public EventDate(LocalDate date){
 		this.date = date;
 		events = new ArrayList<>();
 	}
 	
+	//constructor to return the number of events
 	public int getEventCount(){
 		return events.size();
 	}
 	
+	//method to add an event into the ArrayList
 	public boolean add(EventSchedule anEvent){
+		//will check if there is another event conflicting with startTime and endTime
 		boolean conflict = false;
 		int i = 0;
 		if(anEvent.startTime().compareTo(anEvent.endTime()) > 0)
@@ -32,18 +39,20 @@ public class EventDate {
 				conflict = true;
 			else 
 				conflict = false;
-			i++;
+			i++; 
 		}
-		
+		//if there is no conflict when using the compareTo method, the event will be added
 		if(!conflict)
 			events.add(anEvent);
 		return !conflict;
 	}
 	
+	//method to remove an event from the ArrayList
 	public void remove(EventSchedule anEvent){
 		events.remove(anEvent);
 	}
 	
+	//method to get a list of events
 	public String[] getEventList(){
 		String[] list = new String[events.size()];
 		for(int i = 0; i < list.length; i++){
@@ -52,6 +61,7 @@ public class EventDate {
 		return list;
 	}
 	
+	//method to sort events according to startTime
 	public String toString(){
 		String line = "";
 		
