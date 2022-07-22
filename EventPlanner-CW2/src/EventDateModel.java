@@ -9,7 +9,9 @@ import java.util.Scanner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+//class to read, write and extract events/dates using a text file "events.txt"
 public class EventDateModel {
+	//declaring an ArrayList of dates from events
 	ArrayList<EventDate> dates;
 	ChangeListener listener;
 
@@ -17,10 +19,12 @@ public class EventDateModel {
 		dates = new ArrayList<>();
 	}
 	
+	//adding dates to the ArrayList dates
 	public void add(EventDate aDate){
 		dates.add(aDate);
 	}
 	
+	//method to search and dates from the ArrayList dates to String
 	public String search(LocalDate date){
 		for(int i = 0; i < dates.size(); i++){
 			if(dates.get(i).getDate().equals(date))
@@ -29,6 +33,7 @@ public class EventDateModel {
 		return "";
 	}
 	
+	//method to get events from ArrayList dates
 	public String[] getEventList(LocalDate date){
 		EventDate dateNeeded = null;
 		for(int i = 0; i < dates.size(); i++){
@@ -37,15 +42,17 @@ public class EventDateModel {
 				break;
 			}
 		}
-		
+		//return events list
 		return dateNeeded.getEventList();
 	}
 	
+	//add event method according to the date
 	public boolean addEventToDate(LocalDate adate, EventSchedule event){
 		int i = 0;
 		boolean found = false;
 		boolean addResult = false;
 		EventDate date =  null;
+		//checking if event already exists
 		while(i < dates.size() && !found){
 			if(dates.get(i).date.equals(adate)){
 				date = dates.get(i);
@@ -55,20 +62,25 @@ public class EventDateModel {
 		}
 		
 		if(found)
+			//calling add method from EventDate
 			addResult = date.add(event);
 		if(!found){
+			//add a new date to ArrayList <EventDate>
 			date = new EventDate(adate);
+			//calling add method from EventDate class
 			addResult =date.add(event);
 			dates.add(date);
 		}
-			
+		//return addResult which is an event from EventDate	
 		return addResult;
 	}
 	
+	//remove event method according to the date
 	public void deleteEventFromDate(LocalDate adate, EventSchedule event){
 		int i = 0;
 		boolean found = false;
 		while(i < dates.size() && !found){
+			//if date is found, the remove method from EventDate will be called and the event removed
 			if(dates.get(i).date.equals(adate)){
 				dates.get(i).remove(event);
 				found = true;
@@ -77,6 +89,7 @@ public class EventDateModel {
 		}
 	}
 	
+	//method to display dates from ArrayList <EventDate> dates
 	public String toString(){
 		String line = "";
 		for(int i = 0; i < dates.size(); i++){
@@ -93,6 +106,7 @@ public class EventDateModel {
 		listener.stateChanged(new ChangeEvent(this));
 	}
 	
+	//method to write event in a text file with a try-catch block IOexception error handler
 	public void write(String filename){
 		try{
 			File file = new File(filename);
@@ -109,6 +123,7 @@ public class EventDateModel {
 		}
 	}
 	
+	//method to read event from a text file with a try-catch block IOException error handler
 	public void read(String filename){
 		try{
 			File file = new File(filename);
