@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
+
 //import java.util.Vector;
 //import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -34,7 +35,7 @@ public class ApplicationLogic implements Serializable{
     
     //declare and initialize the Hashmap myEventHashMap
     private static Map<String, Event> myEventHashMap = new HashMap<String, Event>();
-	
+    
     //declare the path (location) and file name for each object 
     String personFileName = "Person.obj";    
     String eventFileName = "Event.obj";
