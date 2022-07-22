@@ -5,21 +5,27 @@ import java.util.Comparator;
  * Represent an EventSchedule schedule on a date
  */
 public class EventSchedule {
+	//this class implement Comparable<Time> using the "compare to" method
 	public static class Time implements Comparable<Time>{
+		//declaring local variables
 		private int hour;
 		private int min;
 		private boolean am;
 		
+		//Time constructor
 		public Time(int hour, int min, boolean am){
 			this.hour = hour;
 			this.min = min;
 			this.am = am;
-		}
+		}		
 		
+		//another constructor that returns hour, minute, am/pm
 		public Time getTime(){
 			return new Time(hour,min,am);
 		}
 
+		//compareTo method will compare two strings to return a 0 if the string is equal
+		//returning either am or pm
 		@Override
 		public int compareTo(Time o2) {
 			if(this.am!=o2.am){
@@ -51,16 +57,19 @@ public class EventSchedule {
 		}
 	}
 	
+	//declaring local variables
 	private String title;
 	private Time start;
 	private Time end;
 	
+	//EventSchedule constructor
 	public EventSchedule(String title, Time start, Time end){
 		this.title = title;
 		this.start = start;
 		this.end = end;
 	}
 	
+	//getters and setters
 	public EventSchedule(){
 		this.title = "";
 	}
@@ -85,6 +94,7 @@ public class EventSchedule {
 		return start.toString()+" - "+end.toString()+"\n"+title;
 	}
 	
+	//boolean method to compare objects and return start time, end time and title of event
 	public boolean equals(Object otherObject){
 		if(this == otherObject) return true;
 		if(otherObject == null) return false;
