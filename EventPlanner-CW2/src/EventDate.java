@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.*;
 
-//class to add, view and check events
+//class to add, get and check events
 public class EventDate {
 	//declaring local variables
 	LocalDate date;
