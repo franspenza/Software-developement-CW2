@@ -14,14 +14,17 @@ public class CalendarModel {
 		
 		//constructor to build calendar 
 		public CalendarModel(){
+			//creating an instance of the Calendar
 			cal = Calendar.getInstance();
+			//returning current year, month and day using ISO8601 calendar system using the getRequestedDay method
 			now = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1,cal.get(Calendar.DAY_OF_MONTH));
+			//building up rows for the calendar using setRowData()
 			setRowData();
 			monthsFromCurrent = 0;
 			daysFromCurrent = 0;
 		}
 		
-		//obtains an instance of LocalDate from a temporal object
+		//a return method to obtain year, month and day of month
 		public LocalDate getRequestedDay(){
 			int requestedYear = cal.get(Calendar.YEAR);
 			int requestedMonth = cal.get(Calendar.MONTH);
@@ -66,6 +69,7 @@ public class CalendarModel {
 			int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 			int weeksInMonth = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
 			
+			//populating array to form the calendar
 			int day = 1;
 			rowData = new String[weeksInMonth*7];
 			for(int i = 0; i < weeksInMonth*7; i++){
@@ -86,6 +90,7 @@ public class CalendarModel {
 			return now;
 		}
 		
+		//returns a copy of the rowData
 		public String[] getRowData(){
 			return rowData.clone();
 		}
