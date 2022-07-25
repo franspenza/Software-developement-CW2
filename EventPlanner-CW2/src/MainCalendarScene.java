@@ -151,7 +151,7 @@ public class MainCalendarScene extends JFrame implements ChangeListener {
 		String[] row = calModel.getRowData();
 		
 		buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout(7, 6));
+		buttonPanel.setLayout(new GridLayout(7, 6));		
 		
 		titleButtons = new JButton[7];
 		

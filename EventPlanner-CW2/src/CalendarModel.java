@@ -2,6 +2,7 @@
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class CalendarModel {
 		
@@ -17,7 +18,7 @@ public class CalendarModel {
 			//creating an instance of the Calendar
 			cal = Calendar.getInstance();
 			//returning current year, month and day using ISO8601 calendar system using the getRequestedDay method
-			now = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1,cal.get(Calendar.DAY_OF_MONTH));
+			now = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1 ,cal.get(Calendar.DAY_OF_MONTH));
 			//building up rows for the calendar using setRowData()
 			setRowData();
 			monthsFromCurrent = 0;
@@ -61,8 +62,11 @@ public class CalendarModel {
 		private void setRowData(){
 			cal.add(Calendar.MONTH, monthsFromCurrent);
 			
+						
+//			cal = new GregorianCalendar(Locale.forLanguageTag("en-US"));
 			//set calendar to current time
-			cal = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),1);
+			cal = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),1);	
+//			cal.set(Calendar.DAY_OF_MONTH, 1);			
 			
 			//get other important dates
 			int firstDayOfMonth = cal.get(Calendar.DAY_OF_WEEK);
