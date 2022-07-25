@@ -18,6 +18,7 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+//Calendar GUI class
 public class MainCalendarScene extends JFrame implements ChangeListener {
 	
 	private CalendarModel calModel;
@@ -150,7 +151,7 @@ public class MainCalendarScene extends JFrame implements ChangeListener {
 		String[] row = calModel.getRowData();
 		
 		buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout(6, 7));
+		buttonPanel.setLayout(new GridLayout(5, 8));
 		
 		titleButtons = new JButton[7];
 		
