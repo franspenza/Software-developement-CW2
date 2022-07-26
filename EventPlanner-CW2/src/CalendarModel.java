@@ -75,8 +75,8 @@ public class CalendarModel {
 			
 			//populating array to form the calendar
 			int day = 1;
-			rowData = new String[weeksInMonth*9];
-			for(int i = 0; i < weeksInMonth*9; i++){
+			rowData = new String[weeksInMonth*10];
+			for(int i = 0; i < weeksInMonth*10; i++){
 				if(i < firstDayOfMonth - 1){
 					rowData[i]="  ";
 				}
