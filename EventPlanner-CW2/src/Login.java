@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -58,8 +59,10 @@ public class Login extends JFrame{
     	btnReg.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e){
-            			register.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            			register.setVisible(true);
+        			setVisible(false);
+        			dispose(); 		
+            		register.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            		register.setVisible(true);
             			
                 }
             });
@@ -142,19 +145,27 @@ public class Login extends JFrame{
     }
     
     public void login() throws NoSuchAlgorithmException, NoSuchProviderException {
-    	String username, unHashedPassword, hashedPassword;
+    	String username, password;
     	boolean loginAuthentication = false;
     
     	username = this.txtUsername.getText();
-    	unHashedPassword = String.valueOf(txtPassword.getPassword());
-    	hashedPassword = applicationLogic.hashPassword(unHashedPassword);   	
+    	password = String.valueOf(txtPassword.getPassword());	
     	
-    	loginAuthentication = applicationLogic.loginVerification(username, hashedPassword);
+    	loginAuthentication = applicationLogic.loginVerification(username, password);
     	
     	if (loginAuthentication == true){
-    		System.out.println("Login Succesfull");
+    		setVisible(false);
+    		dispose(); 	
+    		CalendarModel cal = new CalendarModel();
+    		EventDateModel events = new EventDateModel();
+    		events.read("events.txt");
+    		
+    		MainCalendarScene frame = new MainCalendarScene(cal,events);
+    		
+    		events.attach(frame);
+    		String[] row = cal.getRowData();
     	}else {
-    		System.out.println("Login Failure");
+    		JOptionPane.showMessageDialog(null, "Login failed - incorrect username or password", "Error - Incorrect data", JOptionPane.ERROR_MESSAGE);
     	}
 
     	

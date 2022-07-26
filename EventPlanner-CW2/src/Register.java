@@ -56,6 +56,11 @@ public class Register extends JFrame {
                 //clear data method
         		try {
 					addUser();
+            		setVisible(false);
+            		dispose(); 	
+					Login login = new Login();
+					login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					login.setVisible(true);	
 				} catch (GeneralSecurityException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -66,8 +71,18 @@ public class Register extends JFrame {
     	btnClose.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e){
-            		setVisible(false);
-            		dispose(); 		
+        			setVisible(false);
+        			dispose(); 	
+					Login login = new Login();
+					login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					login.setVisible(true);	
+                }
+        });
+    	
+    	btnClear.addActionListener(new ActionListener(){
+            @Override
+                public void actionPerformed(ActionEvent e){
+            		clearData();
                 }
         });
     }
@@ -256,7 +271,8 @@ public class Register extends JFrame {
             
             
             //assign personPassword with text submitted in txtpersonSurname
-            personPassword = applicationLogic.hashPassword(this.txtSurname.getText());
+            //personPassword = applicationLogic.hashPassword(this.txtSurname.getText());
+            personPassword = this.txtPassword.getText();
             //checking if the string variable personPassword is not null
             if (personPassword != null) {
                 //checking if the personPassword is not empty
@@ -349,11 +365,14 @@ public class Register extends JFrame {
             
             //validate if the ID already exists in the hashmap/file
             boolean personExists = ApplicationLogic.getPersonId(personId);
+            boolean emailInUse = ApplicationLogic.getPersonEmail(personEmail);
             
             if (personExists == true) {
-                
                 JOptionPane.showMessageDialog(null, "person ID is already exists", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (emailInUse == true) {
+            	JOptionPane.showMessageDialog(null, "Email already exists", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
+        		System.out.println("input password: "+personPassword);
 //            	String personId, personTitle, personName, personSurname, personGender, personEmail, personPassword;
 //            	Date personDateOfBirth;    	
                 applicationLogic.addPersonRecord(personId, personTitle, personName, personSurname, personGender, personDateOfBirth, personAge, personEmail, personPassword);
