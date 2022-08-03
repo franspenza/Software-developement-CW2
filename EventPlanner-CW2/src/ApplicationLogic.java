@@ -234,11 +234,8 @@ public class ApplicationLogic implements Serializable{
         	for(int i = 1; i < userIdCounter;) {
         		Person personData = myPersonHashMap.get(String.valueOf(i));
         		i++;
-//        		System.out.println(personData.getEmail());
-//        		System.out.println(personEmail);
         		String email1 = personData.getEmail().toString();
         		if (email1.equals(personEmail)) {
-//        			System.out.println("True");
         			 return true;
         			}
         		}

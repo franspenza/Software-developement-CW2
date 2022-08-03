@@ -151,7 +151,7 @@ public class Login extends JFrame{
     	username = this.txtUsername.getText();
     	password = String.valueOf(txtPassword.getPassword());	
     	
-    	loginAuthentication = applicationLogic.loginVerification(username, password);
+    	loginAuthentication = ApplicationLogic.loginVerification(username, password);
     	
     	if (loginAuthentication == true){
     		setVisible(false);
